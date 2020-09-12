@@ -193,16 +193,16 @@ impl BaseRenderGraphBuilder for RenderGraph {
             .unwrap();
         }
 
-        if msaa.samples > 1 {
+        // if msaa.samples >= 1 {
             self.add_node(
                 node::MAIN_SAMPLED_COLOR_ATTACHMENT,
                 WindowTextureNode::new(
                     WindowId::primary(),
                     TextureDescriptor {
                         size: Extent3d {
-                            depth: 1,
                             width: 1,
                             height: 1,
+                            depth: 1,
                         },
                         mip_level_count: 1,
                         sample_count: msaa.samples,
@@ -220,7 +220,7 @@ impl BaseRenderGraphBuilder for RenderGraph {
                 "color_attachment",
             )
             .unwrap();
-        }
+        //}
 
         if config.connect_main_pass_to_main_depth_texture {
             self.add_slot_edge(
