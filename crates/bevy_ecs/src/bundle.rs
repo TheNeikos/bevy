@@ -2092,7 +2092,7 @@ mod tests {
     }
 
     #[derive(Bundle)]
-    #[bundle(no_extract)]
+    #[bundle(ignore_from_components)]
     struct BundleNoExtract {
         b: B,
         no_from_comp: crate::spawn::SpawnRelatedBundle<ChildOf, Spawn<C>>,
